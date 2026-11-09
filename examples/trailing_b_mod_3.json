@@ -1,0 +1,17 @@
+{
+  "states": ["q0", "q1", "q2"],
+  "alphabet": ["a", "b"],
+  "start": "q0",
+  "accepting": ["q2"],
+  "transitions": [
+    {"from": "q0", "symbol": "a", "to": "q0"},
+    {"from": "q0", "symbol": "b", "to": "q1"},
+    {"from": "q1", "symbol": "a", "to": "q0"},
+    {"from": "q1", "symbol": "b", "to": "q2"},
+    {"from": "q2", "symbol": "a", "to": "q0"},
+    {"from": "q2", "symbol": "b", "to": "q0"}
+  ],
+  "factor_sizes": [2, 2],
+  "strictness": true
+}
+

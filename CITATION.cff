@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the paper below."
+title: "Minimum-Edit Decomposition of Deterministic Finite Automata"
+type: software
+license: MIT
+authors:
+  - family-names: Samadi
+    given-names: Sadegh
+    affiliation: University of Tehran
+  - family-names: Samadi
+    given-names: Mahboubeh
+    affiliation: Shahid Beheshti University
+  - family-names: Hojjat
+    given-names: Hossein
+    affiliation: "Tehran Institute for Advanced Studies, Khatam University"
+preferred-citation:
+  type: conference-paper
+  title: "Minimum-Edit Decomposition of Deterministic Finite Automata"
+  authors:
+    - family-names: Samadi
+      given-names: Sadegh
+    - family-names: Samadi
+      given-names: Mahboubeh
+    - family-names: Hojjat
+      given-names: Hossein
+  conference:
+    name: "FSEN 2027"
+  year: 2027

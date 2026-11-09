@@ -1,0 +1,28 @@
+[project]
+name = "minimum-edit-dfa-decomposition"
+version = "0.1.0"
+description = "Exact MaxSAT solver for minimum-edit strict DFA decomposition"
+authors = [{ name = "Sadegh Samadi" }]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "dfa>=4.7.1,<5.0.0",
+    "python-sat>=1.8.dev1,<2.0.0",
+    "attrs>=23.0,<27.0",
+    "bidict>=0.22,<1.0",
+    "funcy>=2.0,<3.0",
+    "more-itertools>=10.0,<12.0",
+    "networkx>=3.0,<4.0",
+    "pydot>=3.0,<5.0",
+    "matplotlib>=3.10,<4.0",
+]
+
+[project.scripts]
+minimum-edit-dfa = "dfa_identify.cli:main"
+
+[tool.poetry]
+packages = [{ include = "dfa_identify" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
