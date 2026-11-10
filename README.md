@@ -30,7 +30,7 @@ encoding before it is reported.
 | `tests/` | Unit tests. Run them with `poetry run python -m unittest discover -s tests`. |
 | `examples/` | The running example of the paper (`trailing_b_mod_3.dot`). |
 | `benchmark/` | The 693 benchmark instances used in the paper, with a manifest of their SHA-256 hashes. |
-| `results/` | One row per run of the experiments (14 configurations × 693 instances) and the exact configuration of each run. |
+| `results/` | One row per run of the experiments and the exact configuration of each run (see `results/README.md`). |
 | `analysis/` | `paper_numbers.py` recomputes the numbers reported in Sect. 6 of the paper from `results/`. |
 | `remote/`, `scripts/` | The experiment harness exactly as it ran on the server (see `remote/README.md`). |
 | `LICENSES/`, `THIRD_PARTY_NOTICES.md` | Licenses of the code and data this repository builds on. |
@@ -62,14 +62,25 @@ poetry run minimum-edit-dfa examples/trailing_b_mod_3.dot \
 
 The defaults of the command-line tool differ from the default configuration of
 the paper, so give the options explicitly. `results/configurations.csv` lists
-the options of all 14 configurations of the paper. Run
+the options of all configurations. Run
 `poetry run minimum-edit-dfa --help` for a description of each option.
+
+## Configurations
+
+The paper reports 11 configurations: the default configuration and ten
+configurations that each change one choice (MaxSAT, enumeration, sum order,
+product order, lazy strictness, strongly strict, CaDiCaL, MapleCM, MiniSat,
+direct product closure). The results in this repository contain three further
+configurations that the paper does not report: no redundant parent clauses,
+compact BFS, and compact BFS without redundant parent clauses.
 
 ## Reproducing the paper
 
 - **Numbers in Sect. 6:** `python analysis/paper_numbers.py` prints the shares
-  of solved instances, the optimal costs, the running-time comparisons and the
-  memory ratio reported in the paper. It needs only the standard library.
+  of solved instances, the optimal costs and the running-time comparisons
+  reported in the paper. It also prints the same numbers for the three
+  additional configurations and a peak-memory comparison of the two closure
+  encodings, which are not in the paper. It needs only the standard library.
 - **Single runs:** run the tool on an instance from `benchmark/instances/`
   with the options of a configuration from `results/configurations.csv`. Each
   run of the paper had a time limit of 8 hours and a memory limit of 16 GiB.
@@ -90,8 +101,14 @@ of the solver file `dfa_identify/minimum_edit.py` in each campaign:
 
 The file in this repository is the version of the blocking campaign
 (`e7e4406af4dc…`). It differs from the supplement version only in the code for
-lazy strictness and its counters. The `campaign_id` column of
+lazy strictness and its counters. The versions of the reference and supplement
+campaigns are not included. The `campaign_id` column of
 `results/per-run-results.csv` identifies the campaign of each run.
+
+The hashes above were computed on the file with Windows line endings (CRLF),
+as it was deployed to the server. Git stores the file with Unix line endings
+(LF), for which the SHA-256 hash is `a537f423f289…`. Converting the line
+endings to CRLF gives `e7e4406af4dc…` again.
 
 ## License
 
